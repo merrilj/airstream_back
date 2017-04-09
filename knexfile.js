@@ -3,7 +3,7 @@ const databaseName = 'flyway';
 module.exports = {
   development: {
     client: 'postgresql',
-    connection: `postgres://localhost:5432/${databaseName}`,
+    connection: `postgres://localhost:5432/${flyway}`,
     migrations: {
       directory: __dirname + '/src/server/db/migrations'
     },
@@ -11,9 +11,9 @@ module.exports = {
       directory: __dirname + '/src/server/db/seeds'
     }
   },
-  test: {
+  production: {
     client: 'postgresql',
-    connection: `postgres://localhost:5432/${databaseName}_test`,
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: __dirname + '/src/server/db/migrations'
     },
