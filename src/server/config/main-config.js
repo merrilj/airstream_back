@@ -11,7 +11,7 @@
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
   const passport = require('passport');
-
+  const cors = require('cors');
   // *** view folders *** //
   const viewFolders = [
     path.join(__dirname, '..', 'views')
@@ -34,6 +34,7 @@
       app.use(morgan('dev'));
     }
     app.use(cookieParser());
+    app.use(cors())
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     // // uncomment if using express-session

@@ -2,12 +2,29 @@ const express = require('express');
 const router = express.Router();
 const authHelpers = require('../auth/_helpers');
 
+const knex = require('../db/connection')
+
 const indexController = require('../controllers/index');
 
-const knex = '../db/connection'
+router.get('/', (req, res, next) => {
+  knex('airports').select('*')
+    .then((response) => {
+      res.json(response)
+    })
+});
 
-router.get('/favorites', function (req, res, next) {
-  res.send('What Up')
+router.post('/', (req, res, next) => {
+  console.log(req.body)
+  knex('airports').insert({
+    name: req.body.name,
+    code: req.body.code
+  })
+    .then((response) => {
+      res.json(response)
+    })
+    .catch((error) => {
+      res.status(500).send(error)
+    })
 });
 
 module.exports = router;
