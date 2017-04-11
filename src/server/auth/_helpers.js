@@ -62,6 +62,16 @@ function handleErrors(req) {
   });
 }
 
+// function getFavorites(req, res, next) {
+//   return knex('airports')
+//     .select("*")
+//   .then((airport) => {
+//     console.log(airport)
+//   .catch((err) => {
+//     res.status(500).json({status: 'Something bad happened'});
+//   });
+// })
+
 
 module.exports = {
   comparePass,
