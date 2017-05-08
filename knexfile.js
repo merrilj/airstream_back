@@ -12,13 +12,7 @@ module.exports = {
     }
   },
   production: {
-    client: 'postgresql',
-    connection: process.env.DATABASE_URL,
-    migrations: {
-      directory: __dirname + '/src/server/db/migrations'
-    },
-    seeds: {
-      directory: __dirname + '/src/server/db/seeds'
-    }
+    client: 'pg',
+    connection: process.env.DATABASE_URL + "?ssl=true",
   }
 };
